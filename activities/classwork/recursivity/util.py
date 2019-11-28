@@ -7,10 +7,8 @@ class TriangleBuilder(object):
 
     def save(self, i, j, value):
         pass
-
     def get(self, i, j, default=None):
         pass
-
     def create(self, i, j):
         pass
 
