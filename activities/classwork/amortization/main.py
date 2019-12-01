@@ -1,6 +1,6 @@
 import fire
-
 from util import Amortization
+import matplotlib.pyplot as plt
 
 
 class Main(object):
@@ -11,14 +11,18 @@ class Main(object):
 
     @staticmethod
     def annuity(amount, interest, n):
-        pass
+        amortization = Amortization(amount, interest, n)
+        return amortization.annuity()
 
     def table(self, amount, interest, n, rows=10, save=""):
-        pass
+        amortization = Amortization(amount,interest,n)
+        table = amortization.get_table()
+        print(table.head(rows))
+        if save:
+            table.to_csv(save)
 
     def graph(self, amount, interest, n, save=""):
-        pass
-
-
-if __name__ == "__main__":
-    fire.Fire(Main)
+        amortization = Amortization(amount, interest, n)
+        fig = amortization.get_plot()
+        if save:
+            fig.savefig(save)
