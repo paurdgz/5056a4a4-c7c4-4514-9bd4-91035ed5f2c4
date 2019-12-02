@@ -41,10 +41,13 @@ case object Problem1 extends Problem {
       parameters('firstWord.as[String], 'secondWord.as[String]) {
         (first, second) => {
           val challengeSolution: MixedString = {
-            // <---- Your code starts here. --->
-            ???
-            // <---- Your code ends  here. ---->
-          }
+            val var1 =  first.zip(second).map(p => p._1.toString + p._2.toString).mkString
+            val comb = (first.length, second.length) match {
+              case (primero, segundo) if primero > segundo =>  var1 + first.substring(segundo, primero)
+              case (tercero, cuarto) if cuarto > tercero => var1 + second.substring(tercero, cuarto)
+              case _ => var1
+            }
+            MixedString(first = first, second = second, mixed = mixed)
           complete(challengeSolution)
         }
       }

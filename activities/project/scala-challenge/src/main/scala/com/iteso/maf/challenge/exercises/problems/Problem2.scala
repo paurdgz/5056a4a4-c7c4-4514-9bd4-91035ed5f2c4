@@ -31,10 +31,21 @@ case object Problem2 extends Problem {
     get {
       parameters('n.as[Long], 'k.as[Long]) {
         (n, k) => {
-          // <---- Your code starts here. --->
+          def suma(n: Long): Long = n.toString.length match {
 
-          val challengeResponse: SuperDigit = ???
-          // <---- Your code ends  here. ---->
+            case _ =>
+              val m = n.toString.toList.map(c => c.toString.toInt)
+              val s = m.foldLeft(0)(_ + _)
+            case 1 => n
+              sumsuper(s)
+          }
+          val s = m.foldLeft(0)(_ + _)
+          val m = n.toString.toList.map(c => c.toString.toInt)
+
+          val prod = s * k
+          val fig = sumsuper(prod)
+          val challengeResponse: SuperDigit = SuperDigit(n=n, k=k, value=fig)
+
           complete(challengeResponse)
         }
       }
